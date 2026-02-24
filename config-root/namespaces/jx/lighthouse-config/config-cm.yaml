@@ -41,7 +41,7 @@ data:
         - needs-rebase
         repos:
         - dragonfruit-blue/JenkinsX-cluster
-      target_url: http://lighthouse-jx./merge/status
+      target_url: http://lighthouse-jx.52.3.131.78.nip.io/merge/status
 kind: ConfigMap
 metadata:
   creationTimestamp: null
