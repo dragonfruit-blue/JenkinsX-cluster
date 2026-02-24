@@ -1,0 +1,42 @@
+# Source: jxboot-helmfile-resources/templates/environments.yaml
+apiVersion: jenkins.io/v1
+kind: Environment
+metadata:
+  labels:
+    env: "dev"
+    team: jx
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: "dev"
+  annotations:
+    meta.helm.sh/release-name: 'jxboot-helmfile-resources'
+    meta.helm.sh/release-namespace: 'jx'
+  namespace: jx
+spec:
+  source:
+    ref: "master"
+    url: https://github.com/dragonfruit-blue/JenkinsX-cluster.git
+  kind: Development
+  label: Development
+  namespace: jx
+  promotionStrategy: "Never"
+  webHookEngine: "Lighthouse"
+  teamSettings:
+    appsRepository: https://jenkins-x-charts.github.io/repo
+    defaultScheduler:
+      apiVersion: jenkins.io/v1
+      kind: Scheduler
+      name: jx-meta-pipeline
+    dockerRegistryOrg: ""
+    envOrganisation: todo
+    gitServer: https://github.com
+    kubeProvider: "eks"
+    pipelineUsername: "dragonfruit-blue"
+    pipelineUserEmail: "jenkins-x@googlegroups.com"
+    prowConfig: Scheduler
+    storageLocations:
+    - bucketUrl: "s3://logs-jenkinsx-poc-20260224125305678700000016"
+      classifier: "logs"
+    - bucketUrl: "s3://reports-jenkinsx-poc-20260224125305675200000015}"
+      classifier: "reports"
+    - bucketUrl: "s3://repository-jenkinsx-poc-20260224125305675100000014"
+      classifier: "repository"
